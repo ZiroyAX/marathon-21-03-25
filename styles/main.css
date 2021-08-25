@@ -21,3 +21,10 @@ body, button {
   display: grid;
   grid-template-columns: 37% 63%;
 }
+
+@media screen and (max-width: 1439px) {
+}
+
+@media screen and (max-width: 375px) {
+
+}

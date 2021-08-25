@@ -10,12 +10,14 @@
 
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/sidebar.css">
+    <link rel="stylesheet" href="./styles/weatherForecast.css">
+    <script defer src="./js/sidebar.js"></script>
 </head>
 <body>
     <div class="content">
         <div class="sidebar">
             <div class="currentDay">
-                <button class="searchCity">Поиск города</button>
+                <button id="btnSearchCity" class="searchCity">Поиск города</button>
                 <img src="./image/snow.png" alt="Image Weather" class="currentImgWeather">
                 <div class="temperature">
                     <h1 class="degree">1<span class="celsius"> °C</span></h2>
@@ -30,18 +32,45 @@
                 </div>
             </div>
             <div id="searchPanel" class="searchPanel">
-                <button class="btnClose">
+                <button id="btnCloseSearchPanel" class="btnClose">
                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M26 2.61857L23.3814 0L13 10.3814L2.61857 0L0 2.61857L10.3814 13L0 23.3814L2.61857 26L13 15.6186L23.3814 26L26 23.3814L15.6186 13L26 2.61857Z" fill="#48484A"/>
                     </svg>                        
                 </button>
                 <form class="formSearch" action="">
                     <input class="inputSearch" type="text" placeholder="Москва">
-                    <input class="inputButton" type="sumbit" value="Найти">
+                    <input class="inputButton" type="submit" value="Найти">
                 </form>
             </div>
         </div>
-        <div class="weatherForecast"></div>
+        <div class="weatherForecast">
+            <div>
+                <p>Прогноз</p>
+                <button>На неделю</button>
+                <button>почасовой</button>
+            </div>
+            <div class="contentWeatherForecast">
+                <button id="btnLeft">
+                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle opacity="0.3" cx="19" cy="19" r="19" transform="rotate(-180 19 19)" fill="white"/>
+                        <path opacity="0.3" d="M23 24.5L13.8735 18.8503C13.242 18.4593 13.242 17.5407 13.8735 17.1497L23 11.5" stroke="#ACACAC" stroke-width="3"/>
+                    </svg>                        
+                </button>
+                <button id="card_1" class="card">sdfsdfsdf</button>
+                <button id="card_2" class="card">sdfsdfsdf</button>
+                <button id="card_3" class="card">sdfsdfsdf</button>
+                <button id="card_4" class="card">sdfsdfsdf</button>
+                <button id="card_5" class="card">sdfsdfsdf</button>
+                <button id="card_6" class="card">sdfsdfsdf</button>
+                <button id="card_7" class="card">sdfsdfsdf</button>
+                <button id="btnRight">
+                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="19" cy="19" r="19" fill="white"/>
+                        <path d="M15 13.5L24.1265 19.1497C24.758 19.5407 24.758 20.4593 24.1265 20.8503L15 26.5" stroke="#ACACAC" stroke-width="3"/>
+                    </svg>                        
+                </button>
+            </div>
+        </div>
         <div class="detail"></div>
     </div>
 </body>
