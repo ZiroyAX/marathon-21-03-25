@@ -1,4 +1,8 @@
+.sidebar {
+  min-width: 465px;
+}
 .currentDay {
+  box-sizing: border-box;
   display: grid;
   padding: 42px;
   grid-template-columns: 1fr 1fr;
@@ -9,6 +13,47 @@
   background-position: center 80px;
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+.searchPanel {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 26px 50px;
+  row-gap: 46px;
+  box-sizing: border-box;
+  position: relative;
+  background-color: seagreen;
+  /* left: -100%; */
+  top: -100%;
+  height: 100%;
+  padding: 46px;
+}
+
+.searchPanel .btnClose {
+  width: 26px;
+  height: 26px;
+  justify-self: right;
+}
+
+.searchPanel .formSearch {
+  justify-self: center;
+}
+
+.searchPanel input {
+  background: #FFFFFF;
+  border: 2px solid #ACACAC;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 50px;
+}
+
+.searchPanel .inputSearch {
+  width: 250px;
+}
+
+.searchPanel .inputButton {
+  width: 97px;
+  margin-left: 22px;
 }
 
 .searchCity {

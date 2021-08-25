@@ -9,23 +9,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,900;1,400;1,500;1,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/currentDay.css">
+    <link rel="stylesheet" href="./styles/sidebar.css">
 </head>
 <body>
     <div class="content">
-        <div class="currentDay">
-            <button class="searchCity">Поиск города</button>
-            <img src="./image/snow.png" alt="Image Weather" class="currentImgWeather">
-            <div class="temperature">
-                <h1 class="degree">1<span class="celsius"> °C</span></h2>
+        <div class="sidebar">
+            <div class="currentDay">
+                <button class="searchCity">Поиск города</button>
+                <img src="./image/snow.png" alt="Image Weather" class="currentImgWeather">
+                <div class="temperature">
+                    <h1 class="degree">1<span class="celsius"> °C</span></h2>
+                </div>
+                <h3 class="currentWeather">Снег</h3>
+                <p class="feelingWeather">Ощущается как -3 °C</p>
+                <p class="week">Сегодня</p>
+                <p class="date">Вс, 13 мар</p>
+                <div class="address">
+                    <img src="./image/vector.png" alt="vector" class="vector">
+                    <p class="nameCity">Москва</p>
+                </div>
             </div>
-            <h3 class="currentWeather">Снег</h3>
-            <p class="feelingWeather">Ощущается как -3 °C</p>
-            <p class="week">Сегодня</p>
-            <p class="date">Вс, 13 мар</p>
-            <div class="address">
-                <img src="./image/vector.png" alt="vector" class="vector">
-                <p class="nameCity">Москва</p>
+            <div id="searchPanel" class="searchPanel">
+                <button class="btnClose">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26 2.61857L23.3814 0L13 10.3814L2.61857 0L0 2.61857L10.3814 13L0 23.3814L2.61857 26L13 15.6186L23.3814 26L26 23.3814L15.6186 13L26 2.61857Z" fill="#48484A"/>
+                    </svg>                        
+                </button>
+                <form class="formSearch" action="">
+                    <input class="inputSearch" type="text" placeholder="Москва">
+                    <input class="inputButton" type="sumbit" value="Найти">
+                </form>
             </div>
         </div>
         <div class="weatherForecast"></div>
