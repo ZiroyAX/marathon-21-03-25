@@ -6,12 +6,13 @@
     <title>PRE.AX Марафон</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,900;1,400;1,500;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/sidebar.css">
     <link rel="stylesheet" href="./styles/weatherForecast.css">
     <script defer src="./js/sidebar.js"></script>
+    <script defer src="./js/weatherForecast.js"></script>
 </head>
 <body>
     <div class="content">
@@ -44,7 +45,7 @@
             </div>
         </div>
         <div class="weatherForecast">
-            <div>
+            <div class="titleWeatherForecast">
                 <p>Прогноз</p>
                 <button>На неделю</button>
                 <button>почасовой</button>
@@ -56,13 +57,13 @@
                         <path opacity="0.3" d="M23 24.5L13.8735 18.8503C13.242 18.4593 13.242 17.5407 13.8735 17.1497L23 11.5" stroke="#ACACAC" stroke-width="3"/>
                     </svg>                        
                 </button>
-                <button id="card_1" class="card">sdfsdfsdf</button>
-                <button id="card_2" class="card">sdfsdfsdf</button>
-                <button id="card_3" class="card">sdfsdfsdf</button>
-                <button id="card_4" class="card">sdfsdfsdf</button>
-                <button id="card_5" class="card">sdfsdfsdf</button>
-                <button id="card_6" class="card">sdfsdfsdf</button>
-                <button id="card_7" class="card">sdfsdfsdf</button>
+                <button id="card_1" class="card"><p class="cardT">Завтра</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
+                <button id="card_2" class="card"><p class="cardT">Вт, 15 мар</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
+                <button id="card_3" class="card"><p class="cardT">Вт, 16 мар</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
+                <button id="card_4" class="card"><p class="cardT">Вт, 17 мар</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
+                <button id="card_5" class="card"><p class="cardT">Вт, 18 мар</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
+                <button id="card_6" class="card"><p class="cardT">Вт, 19 мар</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
+                <button id="card_7" class="card"><p class="cardT">Вт, 20 мар</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
                 <button id="btnRight">
                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="19" cy="19" r="19" fill="white"/>

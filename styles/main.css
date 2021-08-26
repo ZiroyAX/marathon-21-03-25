@@ -9,8 +9,11 @@
   /* --main-color-text: green; */
 }
 
-body, button {
+body {
   background-color: #E5E5E5;
+}
+
+body, button, p {
   color: var(--main-color-text);
   font-family: 'Rubik', sans-serif;
   font-style: normal;
@@ -20,11 +23,17 @@ body, button {
 .content {
   display: grid;
   grid-template-columns: 37% 63%;
+  /* column-gap: 73px; */
 }
 
 @media screen and (max-width: 1439px) {
+  .content {
+    grid-template-columns: 40% 60%;
+  }
 }
 
 @media screen and (max-width: 375px) {
-
+  .content {
+    grid-template-columns: 1fr;
+  }
 }
