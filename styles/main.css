@@ -23,17 +23,22 @@ body, button, p {
 .content {
   display: grid;
   grid-template-columns: 37% 63%;
+  grid-template-rows: 272px 492px;
   /* column-gap: 73px; */
 }
 
 @media screen and (max-width: 1439px) {
   .content {
+    min-width: 837px;
     grid-template-columns: 40% 60%;
+    grid-template-rows: 272px 900px;
   }
 }
 
 @media screen and (max-width: 375px) {
   .content {
+    min-width: initial;
     grid-template-columns: 1fr;
-  }
+    grid-template-rows: none;
+}
 }
