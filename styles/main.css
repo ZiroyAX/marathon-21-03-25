@@ -6,10 +6,14 @@
 :root {
   --main-color-text: #48484A;
   --second-color-text: #ACACAC;
+
+  --main-color-text-black: #E6E6E6;
+  --second-color-text-black: #ACACAC;
   /* --main-color-text: green; */
 }
 
 body {
+  /* dark: #100E1C */
   background-color: #E5E5E5;
 }
 

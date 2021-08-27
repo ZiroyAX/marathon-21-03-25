@@ -68,8 +68,9 @@
 }
 
 .searchCity {
-  grid-column-start: 1;
-  grid-column-end: 3;
+  /* grid-column-start: 1;
+  grid-column-end: 3; */
+  align-self: center;
   width: 180px;
   height: 50px;
   background: #FFFFFF;
@@ -78,6 +79,31 @@
   border-radius: 10px;
   font-weight: bold;
   font-size: 18px;
+}
+
+#btnTheme {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: center;
+  justify-self: right;
+  align-content: center;
+  width: 64px;
+  height: 32px;
+  background: #FFFFFF;
+  border: 2px solid #ACACAC;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+#btnTheme div {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  justify-self: center;
+  width: 20px;
+  height: 20px;
+  background: #48484A;
+  border-radius: 89px;
 }
 
 .currentImgWeather {
