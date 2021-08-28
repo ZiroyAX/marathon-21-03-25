@@ -12,13 +12,15 @@
     <link rel="stylesheet" href="./styles/sidebar.css">
     <link rel="stylesheet" href="./styles/weatherForecast.css">
     <link rel="stylesheet" href="./styles/detail.css">
+    <script type="module" defer src="./js/main.js"></script>
     <script type="module" defer src="./js/sidebar.js"></script>
     <script type="module" defer src="./js/weatherForecast.js"></script>
+    <script type="module" defer src="./js/detail.js"></script>
 </head>
 <body>
     <div class="content">
         <div class="sidebar">
-            <div class="currentDay">
+            <div id="currentDay" class="currentDay">
                 <button id="btnSearchCity" class="searchCity">Поиск города</button>
                 <button id="btnTheme">
                     <div>
