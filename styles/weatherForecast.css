@@ -26,6 +26,10 @@
   display: flex;
 }
 
+.contentWeatherForecast div {
+  display: flex;
+}
+
 .contentWeatherForecast .card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -119,7 +123,7 @@
     display: none;
   }
 
-  .contentWeatherForecast {
+  .contentWeatherForecast div {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
