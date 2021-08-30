@@ -58,7 +58,7 @@ class DisplayVisibility {
   }
 }
 
-const Data = [
+const DataDay = [
   {
     weekOrHourDay: 'Завтра',
     day: '22°C',
@@ -102,61 +102,236 @@ const Data = [
     night: '14°C',
     backgroundImage: "url('../image/imgWeather_2.png')",
   }
+];
+
+const DataHour = [
+  {
+    weekOrHourDay: '12:00',
+    day: '22°C',
+    night: '14°C',
+    backgroundImage: "url('../image/imgWeather_1.png')",
+    visibility: true,
+  },
+  {
+    weekOrHourDay: '14:00',
+    day: '22°C',
+    night: '14°C',
+    backgroundImage: "url('../image/imgWeather_3.png')",
+    visibility: true,
+  },
+  {
+    weekOrHourDay: '16:00',
+    day: '22°C',
+    night: '14°C',
+    backgroundImage: "url('../image/imgWeather_3.png')",
+    visibility: true,
+  },
+  {
+    weekOrHourDay: '18:00',
+    day: '22°C',
+    night: '14°C',
+    backgroundImage: "url('../image/imgWeather_3.png')",
+    visibility: true,
+  },
 ]
 
+let widthSizeScreen = window.innerWidth;
 window.onresize = () => {
-  const widthSizeScreen = window.innerWidth;
+  widthSizeScreen = window.innerWidth;
   
   if (widthSizeScreen >= 1440) {
     weekDayVisibility.visibility(6);
   } else if (widthSizeScreen > 375 && widthSizeScreen < 1440) {
     weekDayVisibility.visibility(3);
-  } else weekDayVisibility.visibility(Data.length);
+  } else weekDayVisibility.visibility(DataDay.length);
 
-  Array.from(hourData.querySelectorAll('button')).forEach((item, index) => {
+  if (widthSizeScreen >= 1440) {
+    weekHourVisibility.visibility(6);
+  } else if (widthSizeScreen > 375 && widthSizeScreen < 1440) {
+    weekHourVisibility.visibility(3);
+  } else weekHourVisibility.visibility(DataHour.length);
+
+  Array.from(weekData.querySelectorAll('button')).forEach((item, index) => {
     if (weekDayVisibility.visibilityBoolean[index]) {
+      item.style.display = 'grid';
+    } else item.style.display = 'none';
+  })
+  Array.from(hourData.querySelectorAll('button')).forEach((item, index) => {
+    if (weekHourVisibility.visibilityBoolean[index]) {
       item.style.display = 'grid';
     } else item.style.display = 'none';
   })
 }
 
-let visibilityCounter = 0;
+let visibilityCounterDay = 0;
 if (window.innerWidth >= 1440) {
-  visibilityCounter = 6;
+  visibilityCounterDay = 6;
 } else if (window.innerWidth > 375 && window.innerWidth < 1440) {
-  visibilityCounter = 3;
-} else visibilityCounter = Data.length;
+  visibilityCounterDay = 3;
+} else visibilityCounterDay = DataDay.length;
 
-const weekDayVisibility = new DisplayVisibility(visibilityCounter, Data.length);
+let visibilityCounterHour = 0;
+if (window.innerWidth >= 1440) {
+  visibilityCounterHour = 6;
+} else if (window.innerWidth > 375 && window.innerWidth < 1440) {
+  visibilityCounterHour = 3;
+} else visibilityCounterHour = DataHour.length;
 
-Data.forEach((item, index) => {
+const weekDayVisibility = new DisplayVisibility(visibilityCounterDay, DataDay.length);
+const weekHourVisibility = new DisplayVisibility(visibilityCounterHour, DataHour.length);
+
+DataDay.forEach((item, index) => {
   const btn = createButton(item);
   if (weekDayVisibility.visibilityBoolean[index]) {
     btn.style.display = 'grid';
   } else btn.style.display = 'none';
+  weekData.appendChild(btn);
+});
+
+DataHour.forEach((item, index) => {
+  const btn = createButton(item);
+  if (weekHourVisibility.visibilityBoolean[index]) {
+    btn.style.display = 'grid';
+  } else btn.style.display = 'none';
   hourData.appendChild(btn);
-})
+});
+
 
 btnRight.addEventListener('click', () => {
-  weekDayVisibility.plus();
-  Array.from(hourData.querySelectorAll('button')).forEach((item, index) => {
-    if (weekDayVisibility.visibilityBoolean[index]) {
-      item.style.display = 'grid';
-    } else item.style.display = 'none';
-  })
+  if (activeButton === 'day') {
+    weekDayVisibility.plus();
+    Array.from(weekData.querySelectorAll('button')).forEach((item, index) => {
+      if (weekDayVisibility.visibilityBoolean[index]) {
+        item.style.display = 'grid';
+      } else item.style.display = 'none';
+    });
+    if (weekDayVisibility.visibilityBoolean[weekDayVisibility.visibilityBoolean.length - 1]) {
+      btnRight.querySelector('circle').setAttribute('opacity', '0.3');
+      btnRight.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnRight.querySelector('circle').setAttribute('opacity', '1');
+      btnRight.querySelector('path').setAttribute('opacity', '1');
+    }
+    if (weekDayVisibility.visibilityBoolean[0]) {
+      btnLeft.querySelector('circle').setAttribute('opacity', '0.3');
+      btnLeft.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnLeft.querySelector('circle').setAttribute('opacity', '1');
+      btnLeft.querySelector('path').setAttribute('opacity', '1');
+    }
+  } else if (activeButton === 'hour') {
+    weekHourVisibility.plus();
+    Array.from(hourData.querySelectorAll('button')).forEach((item, index) => {
+      if (weekHourVisibility.visibilityBoolean[index]) {
+        item.style.display = 'grid';
+      } else item.style.display = 'none';
+    });
+    if (weekHourVisibility.visibilityBoolean[weekHourVisibility.visibilityBoolean.length - 1]) {
+      btnRight.querySelector('circle').setAttribute('opacity', '0.3');
+      btnRight.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnRight.querySelector('circle').setAttribute('opacity', '1');
+      btnRight.querySelector('path').setAttribute('opacity', '1');
+    }
+    if (weekHourVisibility.visibilityBoolean[0]) {
+      btnLeft.querySelector('circle').setAttribute('opacity', '0.3');
+      btnLeft.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnLeft.querySelector('circle').setAttribute('opacity', '1');
+      btnLeft.querySelector('path').setAttribute('opacity', '1');
+    }
+  }
 })
 
 btnLeft.addEventListener('click', () => {
-  weekDayVisibility.minus();
-  Array.from(hourData.querySelectorAll('button')).forEach((item, index) => {
-    if (weekDayVisibility.visibilityBoolean[index]) {
-      item.style.display = 'grid';
-    } else item.style.display = 'none';
-  })
+  if (activeButton === 'day') {
+    weekDayVisibility.minus();
+    Array.from(weekData.querySelectorAll('button')).forEach((item, index) => {
+      if (weekDayVisibility.visibilityBoolean[index]) {
+        item.style.display = 'grid';
+      } else item.style.display = 'none';
+    });
+    if (weekDayVisibility.visibilityBoolean[weekDayVisibility.visibilityBoolean.length - 1]) {
+      btnRight.querySelector('circle').setAttribute('opacity', '0.3');
+      btnRight.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnRight.querySelector('circle').setAttribute('opacity', '1');
+      btnRight.querySelector('path').setAttribute('opacity', '1');
+    }
+    if (weekDayVisibility.visibilityBoolean[0]) {
+      btnLeft.querySelector('circle').setAttribute('opacity', '0.3');
+      btnLeft.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnLeft.querySelector('circle').setAttribute('opacity', '1');
+      btnLeft.querySelector('path').setAttribute('opacity', '1');
+    }
+  } else if (activeButton === 'hour') {
+    weekHourVisibility.minus();
+    Array.from(hourData.querySelectorAll('button')).forEach((item, index) => {
+      if (weekHourVisibility.visibilityBoolean[index]) {
+        item.style.display = 'grid';
+      } else item.style.display = 'none';
+    });
+    if (weekHourVisibility.visibilityBoolean[weekHourVisibility.visibilityBoolean.length - 1]) {
+      btnRight.querySelector('circle').setAttribute('opacity', '0.3');
+      btnRight.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnRight.querySelector('circle').setAttribute('opacity', '1');
+      btnRight.querySelector('path').setAttribute('opacity', '1');
+    }
+    if (weekHourVisibility.visibilityBoolean[0]) {
+      btnLeft.querySelector('circle').setAttribute('opacity', '0.3');
+      btnLeft.querySelector('path').setAttribute('opacity', '0.3');
+    } else {
+      btnLeft.querySelector('circle').setAttribute('opacity', '1');
+      btnLeft.querySelector('path').setAttribute('opacity', '1');
+    }
+  }
 })
 
+let activeButton = 'day';
+hourData.style.display = 'none';
 
-
+btnWeek.addEventListener('click', () => {
+  activeButton = 'day';
+  if (widthSizeScreen <= 375) {
+    weekData.style.display = 'grid';
+    hourData.style.display = 'none';
+  } else {
+    weekData.style.display = 'flex';
+    hourData.style.display = 'none';
+  }
+  btnWeek.style.paddingBottom = '9px';
+  btnWeek.style.borderBottom = '3px solid #48484A';  
+  btnHour.style.paddingBottom = 'initial';
+  btnHour.style.borderBottom = 'initial';
+  if (currentTheme.currentTheme === 'white') {
+    btnHour.style.color = currentTheme.whiteStyle.colorSecond;
+  } else btnHour.style.color = currentTheme.blackStyle.colorSecond;
+  if (currentTheme.currentTheme === 'white') {
+    btnWeek.style.color = currentTheme.whiteStyle.color;
+  } else btnWeek.style.color = currentTheme.blackStyle.color;
+});
+btnHour.addEventListener('click', () => {
+  activeButton = 'hour';
+  if (widthSizeScreen <= 375) {
+    weekData.style.display = 'none';
+    hourData.style.display = 'grid';
+  } else {
+    weekData.style.display = 'none';
+    hourData.style.display = 'flex';
+  }
+  btnWeek.style.paddingBottom = 'initial';
+  btnWeek.style.borderBottom = 'initial';
+  btnHour.style.paddingBottom = '9px';
+  btnHour.style.borderBottom = '3px solid #48484A';
+  if (currentTheme.currentTheme === 'white') {
+    btnWeek.style.color = currentTheme.whiteStyle.colorSecond;
+  } else btnWeek.style.color = currentTheme.blackStyle.colorSecond;
+  if (currentTheme.currentTheme === 'white') {
+    btnHour.style.color = currentTheme.whiteStyle.color;
+  } else btnHour.style.color = currentTheme.blackStyle.color;
+});
 
 btnWeek.style.paddingBottom = '9px';
 btnWeek.style.borderBottom = '3px solid #48484A';
