@@ -7,8 +7,8 @@ const currentTheme = {
   set currentTheme(value){
     this._currentTheme = value;
     import('./weatherForecast.js')
-    .then(({testWeather}) => {
-      testWeather();
+    .then(({chooseTheme}) => {
+      chooseTheme();
     })
     .catch((err) => {
       console.dir(err);
@@ -19,6 +19,38 @@ const currentTheme = {
     })
     .catch((err) => {
       console.log(err);
+    });
+  },
+
+  _openWeatherMap: false,
+
+  get openWeatherMap() {
+    return this._openWeatherMap
+  },
+  set openWeatherMap(value) {
+    this._openWeatherMap = value;
+    import('./weatherForecast.js')
+    .then(({updateWeatherForecast}) => {
+      updateWeatherForecast(value);
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+
+    import('./sidebar.js')
+    .then(({updateWeatherForecast}) => {
+      updateWeatherForecast(value);
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+
+    import('./detail.js')
+    .then(({updateWeatherForecast}) => {
+      updateWeatherForecast(value);
+    })
+    .catch((err) => {
+      console.dir(err);
     });
   },
 
@@ -36,6 +68,9 @@ const currentTheme = {
     color: 'var(--main-color-text-black)',
     colorSecond: 'Var(--second-color-text-black)',
   },
+  apiKey: 'e0b2c6d3de6468c1fe09f7d895119d68',
+  city: '',
+  searchData: '',
 };
 
 export default currentTheme

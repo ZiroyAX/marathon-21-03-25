@@ -8,25 +8,32 @@ const btnRight = document.getElementById('btnRight');
 const weekData = document.getElementById('weekData');
 const hourData = document.getElementById('hourData');
 
-function createButton({weekOrHourDay, day, night, backgroundImage}) {
+function createButton({weekOrHourDay, day, night, backgroundImage, type}) {
   // <button id="card_1" class="card"><p class="cardT">Завтра</p><p class="cardLB">10°C</p><p class="cardRB">4°C</p></button>
   const btn = document.createElement('button');
   const pWeekOrHourDay = document.createElement('p');
   const pDay = document.createElement('p');
   const pNight = document.createElement('p');
-  btn.className = 'card';
-  btn.style.backgroundImage = backgroundImage;
-  pWeekOrHourDay.className = 'cardT';
-  pDay.className = 'cardLB';
-  pNight.className = 'cardRB';
 
-  pWeekOrHourDay.innerText = weekOrHourDay;
-  pDay.innerText = day;
-  pNight.innerText = night;
+  pWeekOrHourDay.innerText = weekOrHourDay || '';
+  pDay.innerText = day || '';
+  pNight.innerText = night || '';
+
+  btn.className = 'card';
+  btn.style.backgroundImage = backgroundImage || '';
+  pWeekOrHourDay.className = 'cardT';
 
   btn.appendChild(pWeekOrHourDay);
-  btn.appendChild(pDay);
-  btn.appendChild(pNight);
+
+  if (type === 'hour') {
+    pDay.className = 'cardB';
+    btn.appendChild(pDay);
+  } else if (type === 'day'){
+    pDay.className = 'cardLB';
+    pNight.className = 'cardRB';
+    btn.appendChild(pDay);
+    btn.appendChild(pNight);
+  }
 
   return btn
 }
@@ -58,82 +65,93 @@ class DisplayVisibility {
   }
 }
 
-const DataDay = [
-  {
-    weekOrHourDay: 'Завтра',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_1.png')",
-    visibility: true,
-  },
-  {
-    weekOrHourDay: 'Вт, 15 мар',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_2.png')",
-  },
-  {
-    weekOrHourDay: 'Вт, 16 мар',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_3.png')",
-  },
-  {
-    weekOrHourDay: 'Вт, 17 мар',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_1.png')",
-  },
-  {
-    weekOrHourDay: 'Вт, 18 мар',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_2.png')",
-  },
-  {
-    weekOrHourDay: 'Вт, 19 мар',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_2.png')",
-  },
-  {
-    weekOrHourDay: 'Вт, 20 мар',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_2.png')",
-  }
-];
+const DataDay = new Array(7).fill({type: 'day'});
+// const DataDay = [
+//   {
+//     weekOrHourDay: 'Завтра',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_1.png')",
+//     visibility: true,
+//     type: 'day',
+//   },
+//   {
+//     weekOrHourDay: 'Вт, 15 мар',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_2.png')",
+//     type: 'day',
+//   },
+//   {
+//     weekOrHourDay: 'Вт, 16 мар',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_3.png')",
+//     type: 'day',
+//   },
+//   {
+//     weekOrHourDay: 'Вт, 17 мар',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_1.png')",
+//     type: 'day',
+//   },
+//   {
+//     weekOrHourDay: 'Вт, 18 мар',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_2.png')",
+//     type: 'day',
+//   },
+//   {
+//     weekOrHourDay: 'Вт, 19 мар',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_2.png')",
+//     type: 'day',
+//   },
+//   {
+//     weekOrHourDay: 'Вт, 20 мар',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_2.png')",
+//     type: 'day',
+//   }
+// ];
 
-const DataHour = [
-  {
-    weekOrHourDay: '12:00',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_1.png')",
-    visibility: true,
-  },
-  {
-    weekOrHourDay: '14:00',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_3.png')",
-    visibility: true,
-  },
-  {
-    weekOrHourDay: '16:00',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_3.png')",
-    visibility: true,
-  },
-  {
-    weekOrHourDay: '18:00',
-    day: '22°C',
-    night: '14°C',
-    backgroundImage: "url('../image/imgWeather_3.png')",
-    visibility: true,
-  },
-]
+const DataHour = new Array(48).fill({type: 'hour'});
+
+
+// const DataHour = [
+//   {
+//     weekOrHourDay: '12:00',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_1.png')",
+//     type: 'hour',
+//   },
+//   {
+//     weekOrHourDay: '14:00',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_3.png')",
+//     type: 'hour',
+//   },
+//   {
+//     weekOrHourDay: '16:00',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_3.png')",
+//     type: 'hour',
+//   },
+//   {
+//     weekOrHourDay: '18:00',
+//     day: '22°C',
+//     night: '14°C',
+//     backgroundImage: "url('../image/imgWeather_3.png')",
+//     type: 'hour',
+//   },
+// ]
 
 let widthSizeScreen = window.innerWidth;
 window.onresize = () => {
@@ -340,7 +358,7 @@ if (currentTheme.currentTheme === 'white') {
   btnHour.style.color = currentTheme.whiteStyle.colorSecond;
 } else btnHour.style.color = currentTheme.blackStyle.colorSecond;
 
-export function testWeather() {
+export function chooseTheme() {
   if (currentTheme.currentTheme === 'white') {
     btnHour.style.color = currentTheme.whiteStyle.colorSecond;
     Array.from(card).forEach((item) => {
@@ -356,4 +374,32 @@ export function testWeather() {
     btnLeft.querySelector('circle').setAttribute('fill', '#212331');
     btnRight.querySelector('circle').setAttribute('fill', '#212331');
   }
+}
+
+export function updateWeatherForecast(value) {
+  const OPTION_DATE = {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+  }
+  const arrButtonsWeek = weekData.querySelectorAll('button');
+  const arrButtonsHour = hourData.querySelectorAll('button');
+
+  Array.from(arrButtonsWeek).forEach((item, index) => {
+    const arrP = item.querySelectorAll('p');
+    arrP[0].innerText = index === 0 ? 'Завтра': new Date(value.daily[index + 1].dt * 1000).toLocaleString('ru', OPTION_DATE).slice(0, -1);
+    arrP[1].innerText = Math.round(value.daily[index + 1].temp.day) + '°C';
+    arrP[2].innerText = Math.round(value.daily[index + 1].temp.night) + '°C';
+    item.style.backgroundImage = `url(http://openweathermap.org/img/wn/${value.daily[index + 1].weather[0].icon}@2x.png)`;
+    arrP[2].style.color = 'var(--second-color-text-black)';
+  });
+  Array.from(arrButtonsHour).forEach((item, index) => {
+    const arrP = item.querySelectorAll('p');
+    const day = new Date(value.hourly[index].dt * 1000).toLocaleString('ru', OPTION_DATE).slice(0, -1);
+    const time = new Date(value.hourly[index].dt * 1000).toLocaleString('ru', {hour: 'numeric', minute: 'numeric',});
+    arrP[0].innerText = `${day} \n ${time}`;
+    arrP[1].innerText = Math.round(value.hourly[index].temp) + '°C';
+    item.style.backgroundImage = `url(http://openweathermap.org/img/wn/${value.hourly[index].weather[0].icon}@2x.png)`;
+  });
+
 }

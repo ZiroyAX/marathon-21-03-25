@@ -50,6 +50,13 @@
   grid-column-end: 3;
 }
 
+.contentWeatherForecast .card .cardB {
+  justify-content: center;
+  align-self: flex-end;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 .contentWeatherForecast .card .cardLB {
   justify-content: center;
   align-self: flex-end;
@@ -58,6 +65,7 @@
 .contentWeatherForecast .card .cardRB {
   justify-content: center;
   align-self: flex-end;
+  color: var(--second-color-text-black);
 }
 
 #btnLeft {

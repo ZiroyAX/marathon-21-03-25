@@ -10,6 +10,8 @@ const btnTheme = document.getElementById('btnTheme');
 const divInbtnTheme = btnTheme.querySelector('div');
 const pathIndivBtnTheme = divInbtnTheme.querySelector('path');
 const feelingWeather = document.getElementsByClassName('feelingWeather');
+const inputSearch = document.querySelector('.inputSearch');
+const inputButton = document.querySelector('.inputButton');
 
 btnSearchCity.addEventListener('click', () => {
   searchPanel.style.left = 0;
@@ -17,6 +19,29 @@ btnSearchCity.addEventListener('click', () => {
 
 btnCloseSearchPanel.addEventListener('click', () => {
   searchPanel.style.left = '-100%';
+})
+
+inputSearch.addEventListener('input', (e) => {
+  currentTheme.searchData = e.target.value;
+})
+
+inputButton.addEventListener('click', () => {
+  const query = currentTheme.searchData;
+  fetch(`https://nominatim.openstreetmap.org/search.php?q=${query}&format=json&addressdetails=1&limit=1`)
+  .then(response => response.json())
+  .then(result => {
+    console.log(result);
+    currentTheme.city = result[0].address.city || result[0].address.town;
+    const lat = result[0].lat;
+    const lon = result[0].lon;
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${currentTheme.apiKey}&units=metric&lang=ru`)
+    .then(response => response.json())
+    .then(result => {
+      currentTheme.openWeatherMap = result;
+      searchPanel.style.left = '-100%';
+      console.log('weather', result);
+    });
+  });
 })
 
 btnTheme.addEventListener('click', () => {
@@ -73,4 +98,32 @@ btnTheme.addEventListener('click', () => {
       i.style.color = currentTheme.whiteStyle.color;
     })
   }
-})
+});
+
+export function updateWeatherForecast(value) {
+  const currentImgWeather = currentDay.querySelector('img');
+  currentImgWeather.src = `http://openweathermap.org/img/wn/${value.current.weather[0].icon}@4x.png`;
+
+  const degree = currentDay.getElementsByClassName('degree')[0];
+  const span = document.createElement('span');
+  span.className = 'celsius';
+  span.innerText = ' °C';
+  degree.innerText = Math.round(value.current.temp);
+  degree.appendChild(span);
+
+  const weather = currentDay.querySelector('h3');
+  weather.innerText = value.current.weather[0].description;
+
+  feelingWeather[0].innerText = `Ощущается как ${Math.round(value.current.feels_like)} °C`;
+
+  const OPTION_DATE = {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+  }
+  const currentDate = currentDay.getElementsByClassName('date')[0];
+  currentDate.innerText = new Date(value.current.dt * 1000).toLocaleString('ru', OPTION_DATE).slice(0, -1);
+
+  const nameCity = currentDay.getElementsByClassName('nameCity')[0];
+  nameCity.innerText = currentTheme.city;
+}
