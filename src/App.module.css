@@ -1,0 +1,76 @@
+*, p, button, h1, h2, h3, h4, h5, h6, form {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+--main-color-text: #48484A;
+--second-color-text: #ACACAC;
+--backgroundColor: '#FFFFFF';
+--bodyColor: '#F1F1F1';
+}
+
+body {
+background-color: var(--bodyColor);
+}
+
+body, button, p, input {
+color: var(--main-color-text);
+font-family: 'Rubik', sans-serif;
+font-style: normal;
+font-weight: normal;
+}
+
+button, input, div {
+  background-color: var(--backgroundColor);
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 37% 63%;
+  grid-template-rows: 272px 492px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 50px;
+  text-align: center;
+}
+
+.alert-enter {
+  background-color: teal;
+}
+.alert-enter-active {
+  background-color: red;
+  transition: background-color 2000ms ease-in;
+}
+.alert-enter-done {
+  background-color: red;
+}
+.alert-exit {
+  background-color: red;
+}
+.alert-exit-active {
+  background-color: teal;
+  transition: background-color 2000ms ease-in;
+}
+.alert-exit-done {
+  background-color: teal;
+}
+
+@media screen and (max-width: 1439px) {
+.App {
+  min-width: 837px;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 272px 900px;
+}
+}
+
+@media screen and (max-width: 375px) {
+.content {
+  min-width: initial;
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
+}
+}

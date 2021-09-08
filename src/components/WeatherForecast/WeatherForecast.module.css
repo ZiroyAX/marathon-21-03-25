@@ -1,0 +1,12 @@
+.WeatherForecast {
+  justify-self: center;
+  background-color: initial;
+}
+
+.WeatherForecast button {
+  margin: 0 8px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+}

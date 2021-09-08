@@ -1,0 +1,44 @@
+.TitleWeatherForecast {
+  margin-top: 42px;
+  margin-left: 60px;
+  margin-bottom: 25px;
+}
+
+.TitleWeatherForecast p {
+  display: inline;
+  margin-right: 16px;
+  font-weight: 700;
+}
+
+.TitleWeatherForecast .active {
+  padding-bottom: 9px;
+  border-bottom: 3px solid #48484A;
+}
+
+@media screen and (max-width: 1439px) {
+  .titleWeatherForecast {
+    margin-top: 61px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .titleWeatherForecast {
+    margin-top: 50px;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+  }
+
+  .titleWeatherForecast p {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-self: center;
+    font-size: 24px;
+  }
+
+  .titleWeatherForecast button {
+    font-size: 20px;
+    margin: 0 auto;
+  }
+}

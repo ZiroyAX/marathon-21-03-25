@@ -1,0 +1,100 @@
+.SearchPanel {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 26px 50px;
+  row-gap: 46px;
+  box-sizing: border-box;
+  position: relative;
+  left: -100%;
+  top: -100%;
+  height: 100%;
+  padding: 46px;
+
+  transition: left .5s;
+}
+
+.SearchPanel .btnClose {
+  width: 26px;
+  height: 26px;
+  justify-self: right;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.SearchPanel .formSearch {
+  justify-self: center;
+}
+
+.SearchPanel input {
+  border: 2px solid #ACACAC;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 50px;
+}
+
+.SearchPanel .inputSearch {
+  width: 250px;
+  padding-left: 44px;
+  background-repeat: no-repeat;
+  background-position: 17px center;
+}
+
+.SearchPanel .inputButton {
+  width: 97px;
+  margin-left: 22px;
+}
+
+.sp-enter {
+  /* left: -100%; */
+  display: grid;
+  opacity: 1;
+}
+.sp-enter-active {
+  /* left: 0; */
+  display: none;
+  opacity: 0;
+  transition: left .5s;
+  /* transition: opacity 500ms ease-in; */
+}
+.sp-exit {
+  /* left: 0; */
+  display: none;
+  opacity: 0;
+}
+.sp-exit-active {
+  /* left: -100%; */
+  display: grid;
+  opacity: 1;
+  transition: left .5s;
+  /* transition: opacity 500ms ease-in; */
+}
+
+.sp-exit-done {
+  /* left: -100%; */
+  opacity: 1;
+}
+
+@media screen and (max-width: 1439px) {
+  .searchPanel {
+    row-gap: 37px;
+    padding: 27px;
+  }
+
+  .searchPanel .formSearch {
+    display: grid;
+    justify-items: center;
+  }
+
+  .searchPanel input {
+    margin-top: 20px;
+  }
+
+  .searchPanel .inputSearch {
+    width: 275px;
+  }
+
+  .searchPanel .inputButton {
+    margin-left: 0;
+  }
+}

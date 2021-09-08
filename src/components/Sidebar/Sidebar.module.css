@@ -1,0 +1,18 @@
+.Sidebar {
+  min-width: 465px;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+@media screen and (max-width: 1439px) {
+  .sidebar {
+    min-width: 329px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .sidebar {
+    min-width: 100vw;
+    height: 100vh;
+  }
+}
