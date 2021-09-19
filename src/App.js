@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import cl from './App.module.css';
 import Sidebar from './components/Sidebar/Sidebar';
 import WeatherForecast from './components/WeatherForecast/WeatherForecast';
+import Detail from './components/Detail/Detail';
 import {stylesTheme} from './components/utylites/chooseGlobalStylesTheme';
 import useFetchWeather from './components/hooks/useFetchWeather';
 // import {CSSTransition} from 'react-transition-group';
@@ -38,6 +39,11 @@ function App() {
         setQuery={setQuery}
       />
       <WeatherForecast 
+        data={data}
+        isDownloading={isDownloading}
+        currentTheme={currentTheme}
+      />
+      <Detail 
         data={data}
         isDownloading={isDownloading}
         currentTheme={currentTheme}
