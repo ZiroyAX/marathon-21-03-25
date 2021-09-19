@@ -3,3 +3,8 @@ export const OPTION_DATE = {
   day: 'numeric',
   month: 'short',
 }
+
+export const OPTION_TIME = {
+  hour: 'numeric', 
+  minute: 'numeric',
+}

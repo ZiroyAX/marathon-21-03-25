@@ -5,13 +5,13 @@
 }
 
 @media screen and (max-width: 1439px) {
-  .sidebar {
+  .Sidebar {
     min-width: 329px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .sidebar {
+  .Sidebar {
     min-width: 100vw;
     height: 100vh;
   }

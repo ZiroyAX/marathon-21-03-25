@@ -8,7 +8,7 @@ export default function WeatherForecast({data, isDownloading, currentTheme}) {
   return (
     <div className={cl.WeatherForecast}>
       <TitleWeatherForecast currentBtn={currentBtn} setCurrentBtn={setCurrentBtn} />
-      <ContentWeatherForecast data={data} isDownloading={isDownloading} currentTheme={currentTheme}/>
+      <ContentWeatherForecast data={data} isDownloading={isDownloading} currentTheme={currentTheme} currentBtn={currentBtn}/>
     </div>
   )
 }

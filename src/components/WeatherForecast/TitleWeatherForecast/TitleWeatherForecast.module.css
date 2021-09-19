@@ -16,13 +16,13 @@
 }
 
 @media screen and (max-width: 1439px) {
-  .titleWeatherForecast {
+  .TitleWeatherForecast {
     margin-top: 61px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .titleWeatherForecast {
+  .TitleWeatherForecast {
     margin-top: 50px;
     margin-left: 0;
     display: grid;
@@ -30,14 +30,14 @@
     row-gap: 30px;
   }
 
-  .titleWeatherForecast p {
+  .TitleWeatherForecast p {
     grid-column-start: 1;
     grid-column-end: 3;
     justify-self: center;
     font-size: 24px;
   }
 
-  .titleWeatherForecast button {
+  .TitleWeatherForecast button {
     font-size: 20px;
     margin: 0 auto;
   }

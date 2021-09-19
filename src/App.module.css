@@ -68,7 +68,7 @@ button, input, div {
 }
 
 @media screen and (max-width: 375px) {
-.content {
+.App {
   min-width: initial;
   grid-template-columns: 1fr;
   grid-template-rows: none;
